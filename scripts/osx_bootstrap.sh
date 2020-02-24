@@ -37,7 +37,6 @@ brew install gnu-indent --with-default-names
 brew install gnu-which --with-default-names
 brew install gnu-grep --with-default-names
 
-
 # Install Emacs Plus
 echo "Installing Emacs Plus..."
 brew tap d12frosted/emacs-plus
@@ -57,6 +56,7 @@ PACKAGES=(
     git
     ispell
     jq
+    rbenv
     tree
     vim
     zsh
@@ -86,14 +86,13 @@ brew cask install ${CASKS[@]}
 echo "Installing Ruby gems"
 RUBY_GEMS=(
     bundler
+    pry
 )
 sudo gem install ${RUBY_GEMS[@]}
-
 
 echo "Installing Oh My Zsh..."
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 cp ../.zshrc ~/
-
 
 echo "Configuring Git..."
 cp ../.gitconfig ~/
