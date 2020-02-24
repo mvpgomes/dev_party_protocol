@@ -110,6 +110,6 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 echo "Creating folder structure..."
-[[ ! -d Wiki ]] && mkdir Development
+[[ ! -d Development ]] && mkdir Development
 
 echo "Bootstrapping complete"
