@@ -95,6 +95,9 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 cp ../.zshrc ~/
 
 
+echo "Configuring Git..."
+cp ../.gitconfig ~/
+
 echo "Configuring OSX..."
 
 # Set fast key repeat rate
