@@ -78,7 +78,6 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 
-
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -87,7 +86,9 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+
+## rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
