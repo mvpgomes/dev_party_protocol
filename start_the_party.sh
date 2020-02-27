@@ -17,7 +17,7 @@
 # - https://news.ycombinator.com/item?id=8402079
 # - http://notes.jerzygangi.com/the-best-pgp-tutorial-for-mac-os-x-ever/
 
-echo "Starting bootstrapping"
+echo "Starting the party ... Yay!!!!!"
 
 # Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
@@ -110,6 +110,6 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 echo "Creating folder structure..."
-[[ ! -d Development ]] && mkdir Development
+[[ ! -d ~/Development ]] && mkdir ~/Development
 
-echo "Bootstrapping complete"
+echo "Party is over. Move around folks!!!"
