@@ -73,11 +73,8 @@ echo "Installing cask..."
 brew install caskroom/cask/brew-cask
 
 CASKS=(
-    google-chrome
     iterm2
     postman
-    skype
-    slack
     spectacle
     spotify
 )
