@@ -46,7 +46,7 @@ ln -s /usr/local/Cellar/emacs-mac/*/Emacs.app/ /Applications
 # Install Spacemacs
 echo "Installing Spacemacs..."
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-cp ../.spacemacs ~/
+    cp dotfiles/.spacemacs ~/
 
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
 brew install findutils
@@ -94,10 +94,10 @@ sudo gem install ${RUBY_GEMS[@]}
 
 echo "Installing Oh My Zsh..."
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp ../.zshrc ~/
+cp dotfiles/.zshrc ~/
 
 echo "Configuring Git..."
-cp ../.gitconfig ~/
+cp dotfiles/.gitconfig ~/
 
 echo "Configuring OSX..."
 
