@@ -93,7 +93,7 @@ RUBY_GEMS=(
 sudo gem install ${RUBY_GEMS[@]}
 
 echo "Installing Oh My Zsh..."
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 cp dotfiles/.zshrc ~/
 
 echo "Configuring Git..."
