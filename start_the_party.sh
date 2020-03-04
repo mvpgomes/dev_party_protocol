@@ -22,7 +22,7 @@ echo "Starting the party ... Yay!!!!!"
 # Check for Homebrew, install if we don't have it
 if test ! $(which brew); then
     echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Update homebrew recipes
@@ -32,10 +32,10 @@ brew update
 brew tap homebrew/dupes
 brew install coreutils
 brew install gnu-sed
-brew install gnu-tar 
+brew install gnu-tar
 brew install gnu-indent
-brew install gnu-which 
-brew install gnu-grep 
+brew install gnu-which
+brew install grep
 
 # Install Emacs Plus
 echo "Installing Emacs Plus..."
