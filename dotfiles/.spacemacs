@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     yaml
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
@@ -49,6 +48,7 @@ values."
      markdown
      osx
      org
+     ruby
      (shell :variables
             shell-default-position 'bottom
             shell-default-height 30
@@ -57,6 +57,7 @@ values."
      syntax-checking
      (version-control :variables
                       version-control-global-margin t)
+     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
