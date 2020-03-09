@@ -58,6 +58,7 @@ PACKAGES=(
     ispell
     jq
     kubernetes-cli
+    postgresql
     rbenv
     tree
     vim
