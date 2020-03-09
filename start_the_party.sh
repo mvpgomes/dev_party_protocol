@@ -52,10 +52,12 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 brew install findutils
 
 PACKAGES=(
-    elixir 
+    awscli
+    elixir
     git
     ispell
     jq
+    kubernetes-cli
     rbenv
     tree
     vim
