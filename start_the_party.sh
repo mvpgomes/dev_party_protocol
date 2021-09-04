@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# 
+#
 # Bootstrap script for setting up a new OSX machine
-# 
+#
 # This should be idempotent so it can be run multiple times.
 #
 # Notes:
@@ -35,13 +35,18 @@ brew install gnu-sed
 brew install gnu-tar
 brew install gnu-indent
 brew install gnu-which
-brew install grep
+brew install grep --with-default-names
 
 # Install Emacs Plus
 echo "Installing Emacs Plus..."
 brew tap d12frosted/emacs-plus
-brew install emacs-plus
-ln -s /usr/local/Cellar/emacs-mac/*/Emacs.app/ /Applications
+brew install emacs-plus@28 --with-spacemacs-icon
+brew link emacs-plus
+
+# Install Font Source Code Pro
+echo "Installing Font Source Code Pro..."
+brew tap homebrew/cask-fonts
+brew install --cask font-source-code-pro
 
 # Install Spacemacs
 echo "Installing Spacemacs..."
@@ -58,8 +63,6 @@ PACKAGES=(
     ispell
     jq
     kubernetes-cli
-    postgresql
-    rbenv
     tree
     vim
     zsh
@@ -72,21 +75,19 @@ brew install ${PACKAGES[@]}
 echo "Cleaning up..."
 brew cleanup
 
-echo "Installing cask..."
-brew install caskroom/cask/brew-cask
-
 CASKS=(
-    google-chrome
+    1password-cli
+    alfred
+    firefox
     iterm2
     postman
-    skype
     slack
     spectacle
     spotify
 )
 
 echo "Installing cask apps..."
-brew cask install ${CASKS[@]}
+brew install --cask ${CASKS[@]}
 
 echo "Installing Ruby gems"
 RUBY_GEMS=(
