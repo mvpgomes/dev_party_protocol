@@ -97,5 +97,10 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 # For a full list of active aliases, run `alias`.
 alias emacs="emacs -nw"
 
+# History Timestamp
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
+# Git
+alias delete-local-branches='git branch --merged | grep -v \* | xargs git branch -D'
 # Creds Nexus
 source "/Users/$USER/Library/Application Support/creds/nexus"

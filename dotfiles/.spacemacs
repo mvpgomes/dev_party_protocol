@@ -35,12 +35,9 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t)
-     (clojure :variables
-              clojure-enable-fancify-symbols t
-              clojure-enable-sayid t
-              clojure-enable-clj-refactor t)
      elisp
-     elixir
+     (elixir :variables
+             elixir-backend 'alchemist)
      emacs-lisp
      git
      helm
@@ -55,9 +52,9 @@ values."
             shell-default-term-shell "/bin/zsh")
      spell-checking
      syntax-checking
+     treemacs
      (version-control :variables
                       version-control-global-margin t)
-     yaml
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
