@@ -76,7 +76,7 @@ echo "Cleaning up..."
 brew cleanup
 
 CASKS=(
-    1password-cli
+    1password
     alfred
     iterm2
     postman
