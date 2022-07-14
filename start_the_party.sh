@@ -34,7 +34,7 @@ brew install gnu-sed
 brew install gnu-tar
 brew install gnu-indent
 brew install gnu-which
-brew install grep --with-default-names
+brew install grep
 
 # Install Emacs Plus
 echo "Installing Emacs Plus..."
