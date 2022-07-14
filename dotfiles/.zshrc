@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker mix osx)
+plugins=(git docker mix macos ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,5 +102,3 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # Git
 alias delete-local-branches='git branch --merged | grep -v \* | xargs git branch -D'
-# Creds Nexus
-source "/Users/$USER/Library/Application Support/creds/nexus"
