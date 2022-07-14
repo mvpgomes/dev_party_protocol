@@ -63,6 +63,7 @@ PACKAGES=(
     ispell
     jq
     kubernetes-cli
+    ripgrep
     tree
     vim
     zsh
