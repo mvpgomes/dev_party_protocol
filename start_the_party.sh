@@ -65,6 +65,7 @@ PACKAGES=(
     jq
     kubernetes-cli
     ripgrep
+    svn
     tree
     vim
     zsh
@@ -105,9 +106,6 @@ cp dotfiles/.zshrc ~/
 
 echo "Configuring Git..."
 cp dotfiles/.gitconfig ~/
-
-echo "Reloading terminal environment..."
-source ~/.zshrc
 
 echo "Configuring OSX..."
 
