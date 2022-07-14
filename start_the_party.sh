@@ -79,10 +79,8 @@ brew cleanup
 CASKS=(
     1password-cli
     alfred
-    firefox
     iterm2
     postman
-    slack
     spectacle
     spotify
 )
@@ -94,6 +92,7 @@ echo "Installing Ruby gems"
 RUBY_GEMS=(
     bundler
     pry
+    pry-byebug
     rbenv
     ruby-build
 )
