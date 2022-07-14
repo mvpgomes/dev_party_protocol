@@ -65,6 +65,8 @@ PACKAGES=(
     jq
     kubernetes-cli
     ripgrep
+    rbenv
+    ruby-build
     svn
     tree
     vim
@@ -95,8 +97,6 @@ RUBY_GEMS=(
     bundler
     pry
     pry-byebug
-    rbenv
-    ruby-build
 )
 sudo gem install ${RUBY_GEMS[@]}
 
