@@ -93,6 +93,8 @@ echo "Installing Ruby gems"
 RUBY_GEMS=(
     bundler
     pry
+    rbenv
+    ruby-build
 )
 sudo gem install ${RUBY_GEMS[@]}
 
@@ -102,6 +104,9 @@ cp dotfiles/.zshrc ~/
 
 echo "Configuring Git..."
 cp dotfiles/.gitconfig ~/
+
+echo "Reloading terminal environment..."
+source ~/.zshrc
 
 echo "Configuring OSX..."
 
