@@ -92,6 +92,9 @@ CASKS=(
 echo "Installing cask apps..."
 brew install --cask ${CASKS[@]}
 
+echo "Exporting path..."
+export PATH=/usr/local/bin:$PATH
+
 echo "Installing Ruby gems"
 RUBY_GEMS=(
     bundler
