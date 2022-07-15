@@ -87,6 +87,7 @@ CASKS=(
     postman
     spectacle
     spotify
+    telegram
 )
 
 echo "Installing cask apps..."
