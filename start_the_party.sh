@@ -88,7 +88,14 @@ echo "Installing Oh My Zsh..."
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 cp dotfiles/.zshrc ~/
 
-echo "Installing Powelevel10k"
+echo "Installing Powerlevel10k required fonts..."
+mkdir -p ~/.fonts
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf --output ~/.fonts/'MesloLGS NF Regular.ttf'
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf --output ~/.fonts/'MesloLGS NF Bold.ttf'
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf --output ~/.fonts/'MesloLGS NF Italic.ttf'
+curl -L https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf --output ~/.fonts/'MesloLGS NF Bold Italic.ttf'
+
+echo "Installing Powelevel10k..."
 sh -c "$(git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k)"
 
 echo "Configuring Git..."
@@ -134,14 +141,6 @@ if [[ "$install_ruby" == "Y" ]]; then
 
     echo "Installing Ruby latest version..."
     asdf install ruby latest && asdf global ruby latest
-
-    echo "Installing Ruby gems..."
-    RUBY_GEMS=(
-        bundler
-        pry
-        pry-byebug
-    )
-    sudo gem install ${RUBY_GEMS[@]}
 fi
 
 # Install Elixir
@@ -168,7 +167,7 @@ if [[ "$install_python" == "Y" ]]; then
     asdf install python latest && asdf global python latest
 
     echo "Install Poetry..."
-    curl -sSL https://install.python-poetry.org | python3 -
+    brew install poetry
 fi
 
 # Install Golang
