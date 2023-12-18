@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Bootstrap script for setting up a new OSX machine
+# Bootstrap script for setting up a new OSX machine. This script assumes the user is/will using zsh.
 #
 # This should be idempotent so it can be run multiple times.
 #
@@ -188,7 +188,5 @@ fi
 echo "Cleaning up..."
 brew cleanup
 
-echo "Reloading zsh config..."
-source ~/.zshrc
-
+echo "Installation is completed. Please restart zsh."
 echo "Party is over. Move around folks!!!"
