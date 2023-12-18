@@ -30,6 +30,7 @@ fi
 # Update homebrew recipes
 brew update
 
+echo "Installing GNU core utilities..."
 # Install GNU core utilities (those that come with OS X are outdated)
 brew install coreutils
 brew install gnu-sed
@@ -37,57 +38,41 @@ brew install gnu-tar
 brew install gnu-indent
 brew install gnu-which
 brew install grep
-
-# Install Emacs Plus
-echo "Installing Emacs Plus..."
-brew tap d12frosted/emacs-plus
-brew install emacs-plus@28 --with-spacemacs-icon
-brew link emacs-plus
+brew install findutils
 
 # Install Font Source Code Pro
 echo "Installing Font Source Code Pro..."
 brew tap homebrew/cask-fonts
 brew install --cask font-source-code-pro
 
-# Install Spacemacs
-echo "Installing Spacemacs..."
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-    cp dotfiles/.spacemacs ~/
-
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew install findutils
-
 PACKAGES=(
-    awscli
-    elixir
+    asdf
     git
     ispell
     jq
     kubernetes-cli
     ripgrep
-    rbenv
-    ruby-build
-    svn
     tree
     vim
     zsh
     wget
 )
 
-echo "Installing packages..."
+echo "Installing base packages..."
 brew install ${PACKAGES[@]}
-
-echo "Cleaning up..."
-brew cleanup
 
 CASKS=(
     1password
     alfred
+    docker
     iterm2
     postman
+    google-chrome
+    slack
     spectacle
     spotify
     telegram
+    visual-studio
 )
 
 echo "Installing cask apps..."
@@ -96,23 +81,20 @@ brew install --cask ${CASKS[@]}
 echo "Exporting path..."
 export PATH=/usr/local/bin:$PATH
 
-echo "Installing Ruby gems"
-RUBY_GEMS=(
-    bundler
-    pry
-    pry-byebug
-)
-sudo gem install ${RUBY_GEMS[@]}
+echo "Adding ASDF to Zsh ..."
+echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ~/.zsh_profile
 
 echo "Installing Oh My Zsh..."
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 cp dotfiles/.zshrc ~/
 
+echo "Installing Powelevel10k"
+sh -c "$(git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k)"
+
 echo "Configuring Git..."
 cp dotfiles/.gitconfig ~/
 
 echo "Configuring OSX..."
-
 # Set fast key repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 0
 
@@ -125,5 +107,89 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 echo "Creating folder structure..."
 [[ ! -d ~/Development ]] && mkdir ~/Development
+
+# Install Emacs Plus
+read -p "Install Emacs Plus [Y/N] (default N): " install_emacs
+install_emacs=${install_emacs:-N}
+
+if [[ "$install_emacs" == "Y" ]]; then
+    echo "Installing Emacs Plus..."
+    brew tap d12frosted/emacs-plus
+    brew install emacs-plus
+    ln -s /usr/local/Cellar/emacs-mac/*/Emacs.app/ /Applications
+
+    # Install Spacemacs
+    echo "Installing Spacemacs..."
+    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+    cp dotfiles/.spacemacs ~/
+fi
+
+# Install Ruby
+read -p "Install Ruby [Y/N] (default N): " install_ruby
+install_ruby=${install_ruby:-N}
+
+if [[ "$install_ruby" == "Y" ]]; then
+    echo "Installing Asdf ruby plugin..."
+    asdf plugin add ruby
+
+    echo "Installing Ruby latest version..."
+    asdf install ruby latest && asdf global ruby latest
+
+    echo "Installing Ruby gems..."
+    RUBY_GEMS=(
+        bundler
+        pry
+        pry-byebug
+    )
+    sudo gem install ${RUBY_GEMS[@]}
+fi
+
+# Install Elixir
+read -p "Install Elixir [Y/N] (default N): " install_elixir
+install_elixir=${install_elixir:-N}
+
+if [[ "$install_elixir" == "Y" ]]; then
+    echo "Installing Asdf elixir plugin..."
+    asdf plugin add elixir
+
+    echo "Installing Elixir latest version..."
+    asdf install elixir latest && asdf global elixir latest
+fi
+
+# Install Python
+read -p "Install Python [Y/N] (default N): " install_python
+install_python=${install_python:-N}
+
+if [[ "$install_python" == "Y" ]]; then
+    echo "Installing Asdf python plugin..."
+    asdf plugin add python
+
+    echo "Installing Python3 latest version..."
+    asdf install python latest && asdf global python latest
+
+    echo "Install Poetry..."
+    curl -sSL https://install.python-poetry.org | python3 -
+fi
+
+# Install Golang
+read -p "Install Go [Y/N] (default N): " install_go
+install_go=${install_go:-N}
+
+if [[ "$install_go" == "Y" ]]; then
+    echo "Installing Asdf go plugin..."
+    asdf plugin add golang
+
+    echo "Installing Go latest version..."
+    asdf install golang latest && asdf global golang latest
+
+    echo "Setting GO_ROOT..."
+    ~/.asdf/plugins/golang/set-env.zsh
+fi
+
+echo "Cleaning up..."
+brew cleanup
+
+echo "Reloading zsh config..."
+source ~/.zshrc
 
 echo "Party is over. Move around folks!!!"
